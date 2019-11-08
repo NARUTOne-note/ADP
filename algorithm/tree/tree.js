@@ -150,9 +150,11 @@ console.log(plain2Tree(plainData))
 /**
  * 
  * 遍历多叉树（递归、非递归广度优先、深度优先）
+ * 深度优先遍历：从根节点出发，沿着左子树方向进行纵向遍历，直到找到叶子节点为止。然后回溯到前一个节点，进行右子树节点的遍历，直到遍历完所有可达节点为止。
+ * 广度优先遍历：从根节点出发，在横向遍历二叉树层段节点的基础上纵向遍历二叉树的层次。
  */
 
-(function (window, undefined) {
+;(function (window, undefined) {
     var treeNodes = [
        {
             id: 1,
@@ -199,11 +201,8 @@ console.log(plain2Tree(plainData))
        if (!treeNodes || !treeNodes.length) return;
 
        for (var i = 0, len = treeNodes.length; i < len; i++) {
-
             var childs = treeNodes[i].children;
-
             console.log(treeNodes[i].id);
-
             if(childs && childs.length > 0){
                  parseTreeJson(childs);
             }

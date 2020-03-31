@@ -8,10 +8,9 @@
 - [JavaScript数据结构和算法简述](http://www.alloyteam.com/2015/06/javascript-shu-ju-jie-gou-he-suan-fa-jian-shu-qian-yan/)
 - [面试和算法心得](https://wizardforcel.gitbooks.io/the-art-of-programming-by-july/content/)
 - [背包九讲](https://lei-hdl.gitbooks.io/bag_problem_in_nine/content/)
-
 - [js 算法总结](https://github.com/LukeLin/js-stl)
-
 - [js面试算法](http://mp.weixin.qq.com/s/5h_t5JAuIfLypsuj3SkvjA)
+- [图形算法（邻接矩阵）](https://juejin.im/post/5de7c053518825125d1497e2?utm_source=gold_browser_extension)
 
 ## 数据结构概述
 
@@ -40,6 +39,109 @@
 - 排序
 - 递归
 
-## 参考
+### 复杂度分析
 
-- [图形算法（邻接矩阵）](https://juejin.im/post/5de7c053518825125d1497e2?utm_source=gold_browser_extension)
+**背景原因**：通过机器上运行代码来统计算法的性能，有很大的局限性，它容易受测试环境、数据规模影响：
+
+- 统计结果易受测试环境影响：不同系统、处理器的机器测试结果可能出现很大的不同
+- 统计结果易受数据本身、数据规模影响：不同的数据、不同长度的数据都可能对测试结果产生巨大的影响
+
+而这些都不是我们想要看到的。我们需要的是不受外在因素影响的、大致的估计算法执行效率的方法。这就是使用复杂度分析的原因。
+
+**如何表示**：如何表示算法复杂度，具体来讲就是代码执行的时间、执行消耗的存储空间
+
+```js
+function cal(n) {
+    let sum = 0; // 1 unit_time
+    let i = 0; // 1 unit_time
+    for(; i <= n; i++) { // n unit_time
+        sum += i; // n unit_time
+    }
+    return sum
+}
+
+```
+
+我们粗咯把每次执行的时间都一致，称为 `unit_time` 。
+所以上述代码总共执行 `(2n+2)*unit_time` 时间，即：`T(n)=(2n+2)*unit_time` ，所以，我们可以写成：
+`T(n) = O(f(n))`
+复制代码其中：
+
+- n：表示数据规模的大小
+- f(n)：表示每行代码执行的次数总和
+- O：表示代码的执行时间 T(n) 与 f(n) 表达式成正比
+
+这就是**大 O 时间复杂度表示法**。大 O 时间复杂度实际上并不具体表示代码真正的执行时间，而是表示代码执行时间随数据规模增长的变化趋势，所以，**也叫作渐进时间复杂度（asymptotic time complexity），简称时间复杂度**。
+
+### 时间复杂度
+
+当 n 无限大时，时间复杂度 T(n) 受 n 的最高数量级影响最大，与f(n) 中的常量、低阶、系数关系就不那么大了。所以我们分析代码的时间复杂度时，仅仅关注代码执行次数最多的那段就可以了。
+
+```js
+function fun1(n) {
+    let sum = 0,i = 0;
+    for(; i <= n; i++) {
+        sum += i;
+    }
+    return sum
+}
+function fun2(n) {
+    let sum = 0, sum1 = 0, i = 0, j = 0;
+    for(; i <= n; i++) { // 循环1
+        sum += i;
+    }
+    for(i = 0; i <= n; i++) { // 循环2
+        for(j = 0; j <= n; j++) {
+            sum += i * j;
+        }
+    }
+    return sum
+}
+function fun3(n) {
+    let sum = 0, i = 0;
+    for(; i <= n; i++) {
+        sum += fun(i);
+    }
+    return sum
+}
+```
+
+复制代码`fun1` 中第1行都是常量，对 n 的影响不大，所以总的时间复杂度要看第2、3行的循环，即时间复杂度为：`O(n)`。
+`fun2`中循环1的时间复杂度为 O(n) ，循环2的时间复杂度为 O(n^2)，当 n 趋于无穷大时，总体的时间复杂度要趋于 O(n^2) ，即上面代码的时间复杂度是 `O(n^2)`。
+`fun3` 的时间复杂度是 `O(n * T(fun)) = O(n*n)` ，即 `O(n^2`) 。
+
+所以：`T(c+n)=O(n)，T(m+n)=O(max(m, n))，T(n) = T1(n) T2(m) = O(nm)`，其中 c 为常量
+
+**常见复杂度（按数量阶递增）**:
+
+- 常量阶： O(1)：当算法中不存在循环语句、递归语句，即使有成千上万行的代码，其时间复杂度也是Ο(1)
+- 对数阶：O(logn): 简单介绍一下
+
+```js
+let i=1;
+while (i <= n)  {
+  i = i * 2;
+}
+```
+
+- 线性阶：O(n)
+- 线性对数阶：O(nlogn)
+- 平方阶、立方阶、….、k次方阶：O(n2)、O(n3)、…、O(nk)
+- 指数阶：O(2n)
+- 阶乘阶：O(n!)
+
+### 空间复杂度
+
+时间复杂度表示算法的执行时间与数据规模之间的增长关系。类比一下，空间复杂度表示算法的存储空间与数据规模之间的增长关系。例如：
+
+```js
+function fun(n) {
+    let a = [];
+    for (let i = 0; i < n; i++) {
+        a.push(i);
+    }
+    return a;
+}
+```
+
+复制代码以上代码我们可以清晰的看出代码执行的空间为 `O(1+n) = O(n)`，即为` i 及数组 a 占用的储存空间。

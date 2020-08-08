@@ -25,7 +25,7 @@ function dfsRecursion(nodes, fn) {
 }
 
 /**
- * 非递归实现
+ * 迭代实现
  *
  * @param {*} nodes
  * @param {*} fn

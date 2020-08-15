@@ -1,6 +1,6 @@
 # Welcome to JS の design pattern 
 
->GOF提出的23种设计模式, 需要详细查看见  [Learning JavaScript Design Patterns](https://addyosmani.com/resources/essentialjsdesignpatterns/book/)
+> GOF提出的23种设计模式, 需要详细查看见  [Learning JavaScript Design Patterns](https://addyosmani.com/resources/essentialjsdesignpatterns/book/)
 
 - [常用的Javascript设计模式](http://blog.jobbole.com/29454/)
 - [js设计模式](http://www.cnblogs.com/Darren_code/archive/2011/08/31/JavascripDesignPatterns.html)

@@ -1,9 +1,14 @@
 # Tree
 
-[生成tree](https://github.com/LeuisKen/leuisken.github.io/issues/2)
-[数据结构算法——tree](https://lewis617.github.io/2017/02/18/tree/)
+- [生成tree](https://github.com/LeuisKen/leuisken.github.io/issues/2)
+- [数据结构算法——tree](https://lewis617.github.io/2017/02/18/tree/)
+- [树与二叉树](https://juejin.im/post/6844904154066845703?utm_source=gold_browser_extension)
 
-![tree](./tree.png)
+![no-tree](./no-tree.png)
+
+- 仅有唯一一个根节点，没有节点则为空树
+- 除根节点外，每个节点都有并仅有唯一一个父节点
+- 节点间不能形成闭环
 
 ## 遍历
 

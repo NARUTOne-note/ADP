@@ -31,6 +31,10 @@ class MinStack {
   pop () {
     const num = this.content[--this.length]
     this.content.pop();
+    // 若出栈的值和当前最小值相等，那么辅助栈也要对栈顶元素进行出栈，确保最小值的有效性
+    if (num == this.mins[this.length-1]) {
+      this.mins.pop();
+    }
     return num;
   }
   top () {

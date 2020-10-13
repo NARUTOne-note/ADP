@@ -7,17 +7,18 @@
 // 迭代实现
 function preOrderTree (tree) {
   const res = [];
-  const stack = [];
+  const stack = []; // 栈
   let currNode = null;
 
+  // 首先将根结点入栈
   stack.push(tree);
 
   while (stack.length) {
     currNode = stack.pop();
     if (currNode) {
       res.push(currNode); // 根
-      stack.push(currNode.left) // 左
       stack.push(currNode.right) // 右
+      stack.push(currNode.left) // 左
     }
   }
   return res;

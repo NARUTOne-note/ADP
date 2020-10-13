@@ -4,7 +4,7 @@
  * 左根右
  */
 
-function inOrderTree (tree) {
+function inOrderTree2 (tree) {
   const res = [];
   const stack = [];
   let currNode = tree;

@@ -6,6 +6,31 @@
 
 function postOrderTree (tree) {
   const res = [];
+  const stack = []; // 栈
+  let currNode = null;
+
+  // 首先将根结点入栈
+  stack.push(tree);
+
+  while (stack.length) {
+    currNode = stack.pop();
+    if (currNode) {
+      res.unshift(currNode); // 根
+      // 若当前子树根结点有左孩子，则将左孩子入栈
+      if(cur.left) {
+        stack.push(cur.left)
+      }
+      // 若当前子树根结点有右孩子，则将右孩子入栈
+      if(cur.right) {
+        stack.push(cur.right)
+      }
+    }
+  }
+  return res;
+}
+
+function postOrderTree2 (tree) {
+  const res = [];
   const stack = [];
   let currNode = tree;
   let last = null;

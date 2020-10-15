@@ -30,6 +30,7 @@ function bubbleSort (arr) {
 	var len = arr.length;
 	var i, j;
 	for(i = 0; i < len; i++) {
+		// 尾部慢慢有序
 		for(j = 0; j < len - 1 - i; j++) {
 			if(arr[j] > arr[j+1]) {
 				arr[j] += arr[j+1];
@@ -51,8 +52,9 @@ function bubbleSort2 (arr) {
 	var i, j, pos;
 	
 	i = len - 1;
+	// 若一次交换也没发生，则说明数组有序，直接返回
 	while(i > 0) {
-		pos = 0; //每次无记录交换
+		pos = 0; // 每次无记录交换
 		for(j = 0; j < i; j++) {
 		  if (arr[j]> arr[j+1]) {
         pos= j; //记录交换的位置

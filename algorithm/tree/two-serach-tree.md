@@ -115,3 +115,44 @@ function findMin(root) {
     return root
 }
 ```
+
+## 平衡二叉树
+
+> 平衡二叉树是**任意结点**的**左右子树高度差绝对值都不大于1**的**二叉搜索树**
+
+当前子树高度 = H(L) + H(R) + 1
+
+```js
+/**
+ * 平衡二叉树 判断
+ * @param {TreeNode} root
+ */
+const isBalanced = function(root) {
+  // 立一个flag，只要有一个高度差绝对值大于1，这个flag就会被置为false
+  let flag = true
+  // 定义递归逻辑
+  function dfs(root) {
+      // 如果是空树，高度记为0；如果flag已经false了，那么就没必要往下走了，直接return
+      if(!root || !flag) {
+          return 0
+      }
+      // 计算左子树的高度
+      const left = dfs(root.left)  
+      // 计算右子树的高度
+      const right = dfs(root.right)  
+      // 如果左右子树的高度差绝对值大于1，flag就破功了
+      if(Math.abs(left-right) > 1) { // 绝对值
+          flag = false
+          // 后面再发生什么已经不重要了，返回一个不影响回溯计算的值
+          return 0
+      }
+      // 返回当前子树的高度
+      return Math.max(left, right) + 1
+  }
+  
+  // 递归入口
+  dfs(root)
+  // 返回flag的值
+  return flag
+};
+```

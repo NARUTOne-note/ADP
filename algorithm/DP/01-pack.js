@@ -11,7 +11,7 @@
  * 
 那么当 i > 0 时dp[i][j]有两种情况：
 
-不装入第i件物品，即dp[i−1][j]；
+不装入第i件物品，即dp[i−1][j]；当前价值不变  
 装入第i件物品（前提是能装下），即dp[i−1][j−w[i]] + v[i]。
 即状态转移方程为
 
@@ -70,3 +70,33 @@ function knapsack(ws = [], vs = [], W) {
 
 let a = knapsack([2, 2, 6, 5, 4], [6, 3, 5, 4, 6], 10);
 console.log(a);
+
+// ! 优解
+// 所谓“滚动数组”，顾名思义，就是让数组“滚动”起来：固定一块存储空间，滚动更新这块存储空间的内容，确保每个时刻空间内的数据都是当前真正会用到的最新数据，从而达到节约内存的效果，这种手段就叫做滚动数组。
+// 入参是物品的个数和背包的容量上限，以及物品的重量和价值数组
+function knapsack2(n, c, w, value) {
+  // dp是动态规划的状态保存数组
+  const dp = (new Array(c+1)).fill(0)  
+
+  for (let j = 0; j <= c; j ++) {
+    if (j < w[0]) { // 如果容量不能放下物品0的重量，则价值为0
+      dp[j] = 0;
+    } else { // 否则为物品0的价值
+      dp[j] = value[0];
+    }
+  }
+
+  // res 用来记录所有组合方案中的最大值
+  let res = -Infinity
+  for(let i=1;i<=n;i++) {
+      for(let v=c;v>=w[i];v--) {
+          // 写出状态转移方程
+          dp[v] = Math.max(dp[v], dp[v-w[i]] + value[i])
+          // 即时更新最大值
+          if(dp[v] > res) {
+              res = dp[v]
+          }
+      }
+  }
+  return res
+}

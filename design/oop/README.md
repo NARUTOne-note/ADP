@@ -1,6 +1,6 @@
 # 原型模式
 
-> 原型模式不仅是一种设计模式，它还是一种编程范式（programming paradigm），是 JavaScript 面向对象系统实现的根基。
+> 原型模式不仅是一种设计模式，它还是一种编程范式（programming paradigm），是 JavaScript 面向对象系统实现的根基。一些地方也叫`建造者模式`
 
 在 JavaScript 里，`Object.create`方法就是原型模式的天然实现——准确地说，只要我们还在借助Prototype来实现对象的创建和原型的继承，那么我们就是在应用原型模式.
 

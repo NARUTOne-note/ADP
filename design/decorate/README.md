@@ -41,7 +41,7 @@ class OpenButton {
     // 点击后展示弹框（旧逻辑）
     onClick() {
         const modal = new Modal()
-    	modal.style.display = 'block'
+        modal.style.display = 'block'
     }
 }
 
@@ -90,13 +90,13 @@ document.getElementById('open').addEventListener('click', function() {
 
 - 装饰器语法糖首先帮我们做掉的工作 —— 函数传参&调用
 
-**类装饰器**
+**类装饰器**：
 
 ```js
 // target 为类本身
 function classDecorator(target) {
     target.hasDecorator = true
-  	return target
+    return target
 }
 
 // 将装饰器“安装”到Button类上
@@ -106,7 +106,7 @@ class Button {
 }
 ```
 
-**方法装饰器**
+**方法装饰器**：
 
 ```js
 // target：class.prototype

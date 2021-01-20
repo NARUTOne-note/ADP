@@ -252,3 +252,12 @@ alert ( obj.length );  //1
  * 策略模式的意义是定义一系列的算法，把它们一个个封装起来，并且使它们可相互替换。
  */
 
+const obj = {
+  A: (num) => num * 4,
+  B: (num) => num * 6,
+  C: (num) => num * 8
+}
+
+const getSum =function(type, num) {
+  return obj[type](num)
+}

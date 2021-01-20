@@ -78,7 +78,7 @@ export function install (_Vue) {
 - 闭包
 - 构造函数/类
 
-**静待方法版**
+**静待方法版**:
 
 ```js
 class Storage {
@@ -111,7 +111,7 @@ storage2.getItem('name')
 storage1 === storage2
 ```
 
-**闭包版**
+**闭包版**:
 
 ```js
 // 先实现一个基础的StorageBase类，把getItem和setItem方法放在它的原型链上

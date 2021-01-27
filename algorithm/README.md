@@ -1,9 +1,6 @@
 # 算法
 
-:art:
-
->数据结构：是对在计算机内存中（有时在磁盘中）的数据的一种安排。包括数组、链表、栈、二叉树、哈希表等。
->算法：是对这些结构中的数据进行各种处理。比如，查找一条特殊的数据项或对数据进行排序。
+> 数据结构：是对在计算机内存中（有时在磁盘中）的数据的一种安排。包括数组、链表、栈、二叉树、哈希表等。算法：是对这些结构中的数据进行各种处理。比如，查找一条特殊的数据项或对数据进行排序。
 
 - [JavaScript数据结构和算法简述](http://www.alloyteam.com/2015/06/javascript-shu-ju-jie-gou-he-suan-fa-jian-shu-qian-yan/)
 - [面试和算法心得](https://wizardforcel.gitbooks.io/the-art-of-programming-by-july/content/)

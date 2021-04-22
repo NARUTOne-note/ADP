@@ -178,7 +178,7 @@ var check = new Function();
 
 check.add('checkName', function () {return this;}).add('checkEmail', function () {return this;});
 
-check.checkName(),checkEmail();
+check.checkName().checkEmail();
 
 // 类调用
 var m = new check();
